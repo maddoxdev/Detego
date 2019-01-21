@@ -8,7 +8,5 @@ namespace Detego.API.Entity
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ContactEmail { get; set; }
-        public Guid? StoreId { get; set; }
-        public Store Store { get; set; }
     }
 }

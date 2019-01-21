@@ -30,6 +30,18 @@ namespace Detego.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(
+                options => options.AddPolicy("AllowCors",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowCredentials()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .WithOrigins("http://localhost:4200");
+                    })
+            );
 
             services.AddDbContext<StoreContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("StoreDb"));
@@ -52,12 +64,12 @@ namespace Detego.API
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseCors("AllowCors");
             app.UseSignalR(route => {
                 route.MapHub<NotificationHub>("/notification");
             });
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
