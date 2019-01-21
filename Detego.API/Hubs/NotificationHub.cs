@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Detego.API.Hubs
 {
-    public class NotificationHub : Hub
+    public class NotificationHub : Hub<INotificationHub>
     {
         private readonly ILogger<NotificationHub> _logger;
 
@@ -15,36 +15,21 @@ namespace Detego.API.Hubs
             _logger = logger;
         }
 
-        public override Task OnConnectedAsync()
+        public async Task StoreUpdateNotify(Guid storeId)
         {
-            _logger.LogDebug("!!!!! Подключени !!!!!");
-            return base.OnConnectedAsync();
+            
+            await Clients.All.StoreUpdateNotify(storeId);
         }
 
-        public override Task OnDisconnectedAsync(Exception exception)
+        public async Task StoreListUpdateNotify()
         {
-            _logger.LogDebug("!!!!! Отключен !!!!!");
-            return base.OnDisconnectedAsync(exception);
+            await Clients.All.StoreListUpdateNotify();
         }
+    }
 
-        public async Task SendMsg(string message)
-        {
-            await Clients.All.SendAsync(nameof(SendMsg), message);
-        }
-
-        public async Task Test()
-        {
-            await Clients.All.SendAsync(nameof(Test));
-        }
-
-        public async Task StoreListChanged(CancellationToken cancellationToken)
-        {
-            await Clients.All.SendAsync(nameof(StoreListChanged), cancellationToken);
-        }
-
-        public async Task CharacteristicChanged(Guid storeId, CancellationToken cancellationToken)
-        {
-            await Clients.All.SendAsync(nameof(CharacteristicChanged), storeId, cancellationToken);
-        }
+    public interface INotificationHub
+    {
+        Task StoreUpdateNotify(Guid storeId);
+        Task StoreListUpdateNotify();
     }
 }

@@ -1,26 +1,42 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Detego.API.Application.Stores.Notifications;
+using Detego.API.Context;
+using Detego.API.Entity;
 using MediatR;
 
 namespace Detego.API.Application.Stores.Commands.CreateStore
 {
-    public class CreateStoreHandler : IRequestHandler<CreateStoreCommand>
+    public class CreateStoreHandler : IRequestHandler<CreateStoreCommand, Store>
     {
         private readonly IMediator _mediator;
+        private readonly StoreContext _context;
 
-        public CreateStoreHandler(IMediator mediator)
+        public CreateStoreHandler(IMediator mediator, StoreContext context)
         {
             _mediator = mediator;
+            _context = context;
         }
 
-        public async Task<Unit> Handle(CreateStoreCommand request, CancellationToken cancellationToken)
+        public async Task<Store> Handle(CreateStoreCommand request, CancellationToken cancellationToken)
         {
-            //TODO: Inject DbContext and save data, alse call notify 
+            var store = new Store
+            {
+                Name = request.Name,
+                CountryCode = request.CountryCode,
+                ContactEmail = request.ContactEmail
+            };
 
-            await _mediator.Publish(new StoreCreatedEvent(), cancellationToken);
+            #region [Use repository pattern]
 
-            return Unit.Value;
+            _context.Stores.Add(store);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            await _mediator.Publish(new StoreListUpdateEvent(), cancellationToken);
+
+            return store;
         }
     }
 }

@@ -12,16 +12,16 @@ namespace Detego.API.App.Stores.Queries.GetStoreList
 {
     public class GetStoreListHandler : IRequestHandler<GetStoreListQuery, IList<StoreViewModelDto>>
     {
-        private readonly StoreContext _dbContex;
+        private readonly StoreContext _contex;
 
-        public GetStoreListHandler(StoreContext dbCtx)
+        public GetStoreListHandler(StoreContext context)
         {
-            _dbContex = dbCtx;
+            _contex = context;
         }
 
         public async Task<IList<StoreViewModelDto>> Handle(GetStoreListQuery request, CancellationToken cancellationToken)
         {
-            return await _dbContex.Stores
+            return await _contex.Stores
                 .Include(s => s.Manager)
                 .Select(StoreViewModelDto.Projection)
                 .ToListAsync();

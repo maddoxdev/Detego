@@ -8,7 +8,7 @@ namespace Detego.API.Application.Stores.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string CounryCode { get; set; }
+        public string CountryCode { get; set; }
         public string ContactEmail { get; set; }
         public string ManagerFirstName { get; set; }
         public string ManagerLastName { get; set; }
@@ -22,7 +22,7 @@ namespace Detego.API.Application.Stores.Models
                 {
                     Id = s.Id,
                     Name = s.Name,
-                    CounryCode = s.CountryCode,
+                    CountryCode = s.CountryCode,
                     ContactEmail = s.ContactEmail,
                     ManagerFirstName = s.Manager.FirstName,
                     ManagerLastName = s.Manager.LastName,
