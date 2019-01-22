@@ -34,7 +34,7 @@ namespace Detego.API.Application.Stores.Commands.UpdateStore
             store.Manager.LastName = request.ManagerLastName;
             store.Manager.ContactEmail = request.ManagerContactEmail;
             
-            _context.Entry(store).State = EntityState.Modified;
+            _context.Update(store);
             await _context.SaveChangesAsync();
             #endregion
 

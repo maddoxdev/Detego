@@ -16,7 +16,7 @@ namespace Detego.API.Entity
 
         public Manager Manager { get; set; }
 
-        public Guid CharacteristicId { get; set; }
+        public Guid? CharacteristicId { get; set; }
         public Characteristic Characteristic { get; set; }
     }
 }

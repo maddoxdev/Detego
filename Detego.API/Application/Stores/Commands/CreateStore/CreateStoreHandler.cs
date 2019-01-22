@@ -24,7 +24,14 @@ namespace Detego.API.Application.Stores.Commands.CreateStore
             {
                 Name = request.Name,
                 CountryCode = request.CountryCode,
-                ContactEmail = request.ContactEmail
+                ContactEmail = request.ContactEmail,
+                Manager = new Manager
+                {
+                    FirstName = request.ManagerFirstName,
+                    LastName = request.ManagerLastName,
+                    ContactEmail = request.ManagerContactEmail
+                },
+                Characteristic = new Characteristic()
             };
 
             #region [Use repository pattern]

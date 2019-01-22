@@ -30,7 +30,7 @@ namespace Detego.API.Application.Characteristics.Commands.UpdateCharatcs
             charatcs.Availability = request.Availability;
             charatcs.MeanAge = request.MeanAge;
 
-            _context.Entry(charatcs).State = EntityState.Modified;
+            _context.Update(charatcs);
             await _context.SaveChangesAsync();
 
             await _mediator.Publish(new StoreUpdateEvent {StoreId = request.StoreId});
