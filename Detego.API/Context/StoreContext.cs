@@ -1,4 +1,3 @@
-using System;
 using Detego.API.Entity;
 using Microsoft.EntityFrameworkCore;
 

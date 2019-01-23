@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Detego.API.App.Stores.Queries.GetStoreList;
 using Detego.API.Application.Stores.Commands.CreateStore;
 using Detego.API.Application.Stores.Commands.DeleteStore;
 using Detego.API.Application.Stores.Commands.UpdateStore;
 using Detego.API.Application.Stores.Models;
-using Detego.API.Entity;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Detego.API.Controllers
 {

@@ -1,8 +1,7 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 
 namespace Detego.API.Hubs
 {
@@ -17,7 +16,6 @@ namespace Detego.API.Hubs
 
         public async Task StoreUpdateNotify(Guid storeId)
         {
-            
             await Clients.All.StoreUpdateNotify(storeId);
         }
 

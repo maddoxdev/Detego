@@ -1,10 +1,10 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Detego.API.Application.Stores.Notifications;
 using Detego.API.Context;
 using Detego.API.Entity;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Detego.API.Application.Stores.Commands.UpdateStore
 {

@@ -1,5 +1,5 @@
-using System;
 using MediatR;
+using System;
 
 namespace Detego.API.Application.Stores.Commands.DeleteStore
 {

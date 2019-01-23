@@ -1,10 +1,8 @@
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Detego.API.Application.Stores.Notifications;
 using Detego.API.Context;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Detego.API.Application.Characteristics.Commands.UpdateCharatcs
 {

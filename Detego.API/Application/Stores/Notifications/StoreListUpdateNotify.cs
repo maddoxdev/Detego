@@ -1,8 +1,8 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Detego.API.Hubs;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Detego.API.Application.Stores.Notifications
 {

@@ -1,6 +1,6 @@
+using Detego.API.Entity;
 using System;
 using System.Linq.Expressions;
-using Detego.API.Entity;
 
 namespace Detego.API.Application.Stores.Models
 {

@@ -1,6 +1,6 @@
-using System;
 using Detego.API.Entity;
 using MediatR;
+using System;
 
 namespace Detego.API.Application.Stores.Commands.UpdateStore
 {
